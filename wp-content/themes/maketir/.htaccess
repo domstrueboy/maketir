@@ -1,0 +1,5 @@
+# редирект 301
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^maketir\.ru$ [NC]
+RewriteRule ^(.*)$ http://www.maketir.ru/$1 [R=301,L]
