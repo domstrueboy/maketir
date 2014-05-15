@@ -40,7 +40,7 @@
                         <article>
                             <?php
                                 if ( have_posts() ) : // если имеются записи в блоге.
-                                    query_posts('cat=stores');   // указываем ID рубрик, которые необходимо вывести.
+                                    query_posts('cat=tab2');   // указываем ID рубрик, которые необходимо вывести.
                                     while (have_posts()) : the_post();  // запускаем цикл обхода материалов блога
                             ?>
                             <div class="item">
@@ -58,6 +58,26 @@
                     </div>
 
                     <div id="tab3">
+
+                    	<article>
+                            <?php
+                                if ( have_posts() ) : // если имеются записи в блоге.
+                                    query_posts('cat=tab3');   // указываем ID рубрик, которые необходимо вывести.
+                                    while (have_posts()) : the_post();  // запускаем цикл обхода материалов блога
+                            ?>
+                            <div class="item">
+                                <strong><?php the_title(); ?></strong>
+                                <?php the_content();?>
+                            </div> 
+                            <hr>
+                                <?php                          
+                                    endwhile;  // завершаем цикл.
+                                endif;
+                                    /* Сбрасываем настройки цикла. Если ниже по коду будет идти еще один цикл, чтобы не было сбоя. */
+                                    wp_reset_query();      
+                                ?>
+                        </article>
+
                         <p>Cтоимость работ: Услуги 3Д-печати всего 360руб/час работы принтера с учётом материала и НДС. Необходим файл для печати в формате STL.</p>
                         <p>Мы печатаем на следующем оборудовании:</p>
                         <div class="span5 inline">
@@ -81,7 +101,6 @@
                         </div>
                         <strong><p>Также возможен заказ печати на фотополимерном принтере.</p></strong>
                                                 
-
                         <div id="one">
                             <script>
                                 var one = document.getElementById('one');
