@@ -40,43 +40,22 @@
                         <article>
                             <?php
                                 if ( have_posts() ) : // если имеются записи в блоге.
-                                    query_posts('cat=tab2');   // указываем ID рубрик, которые необходимо вывести.
+                                    get_posts('category_name=tab2');   // указываем ID рубрик, которые необходимо вывести.
                                     while (have_posts()) : the_post();  // запускаем цикл обхода материалов блога
                             ?>
-                            <div class="item">
                                 <strong><?php the_title(); ?></strong>
-                                <?php the_content();?>
-                            </div> 
+                                <?php the_content();?> 
                             <hr>
                                 <?php                          
                                     endwhile;  // завершаем цикл.
                                 endif;
                                     /* Сбрасываем настройки цикла. Если ниже по коду будет идти еще один цикл, чтобы не было сбоя. */
-                                    wp_reset_query();      
+                                    wp_reset_postdata();      
                                 ?>
                         </article>
                     </div>
 
                     <div id="tab3">
-
-                    	<article>
-                            <?php
-                                if ( have_posts() ) : // если имеются записи в блоге.
-                                    query_posts('cat=tab3');   // указываем ID рубрик, которые необходимо вывести.
-                                    while (have_posts()) : the_post();  // запускаем цикл обхода материалов блога
-                            ?>
-                            <div class="item">
-                                <strong><?php the_title(); ?></strong>
-                                <?php the_content();?>
-                            </div> 
-                            <hr>
-                                <?php                          
-                                    endwhile;  // завершаем цикл.
-                                endif;
-                                    /* Сбрасываем настройки цикла. Если ниже по коду будет идти еще один цикл, чтобы не было сбоя. */
-                                    wp_reset_query();      
-                                ?>
-                        </article>
 
                         <p>Cтоимость работ: Услуги 3Д-печати всего 360руб/час работы принтера с учётом материала и НДС. Необходим файл для печати в формате STL.</p>
                         <p>Мы печатаем на следующем оборудовании:</p>
@@ -101,14 +80,43 @@
                         </div>
                         <strong><p>Также возможен заказ печати на фотополимерном принтере.</p></strong>
                                                 
-                        <div id="one">
-                            <script>
-                                var one = document.getElementById('one');
-                                for(i=1; i<219; i++){
-                                    one.insertAdjacentHTML("afterEnd", "<a class='example-image-link' href='wp-content/themes/maketir/img/prints/"+i+".jpg' data-lightbox='example-set'><img class='example-image' src='wp-content/themes/maketir/img/prints/"+i+"_preview.jpg' width='130' height='98'/></a>");
-                                }
-                            </script>
-                        </div>
+                        <article>
+                            <!--<?php
+                                if ( have_posts() ) : // если имеются записи в блоге.
+                                    get_posts('category_name=tab3');   // указываем ID рубрик, которые необходимо вывести.
+                                    while (have_posts()) : the_post();  // запускаем цикл обхода материалов блога
+                            ?>
+                                <strong><?php the_title(); ?></strong>
+                                <?php the_content();?>
+                            	<hr>
+                                <?php                          
+                                    endwhile;  // завершаем цикл.
+                                endif;
+                                    /* Сбрасываем настройки цикла. Если ниже по коду будет идти еще один цикл, чтобы не было сбоя. */
+                                    wp_reset_postdata();      
+                                ?>-->
+
+                            <?php $posts = get_posts(array(
+									'numberposts'     => 5,
+									'offset'          => 0,
+									'category'        => '',
+									'orderby'         => 'post_date',
+									'order'           => 'DESC',
+									'include'         => '',
+									'exclude'         => '',
+									'meta_key'        => '',
+									'meta_value'      => '',
+									'post_type'       => 'post',
+									'post_mime_type'  => '',
+									'post_parent'     => '',
+									'post_status'     => 'publish'
+								));
+								foreach($posts as $post){ setup_postdata($post);
+								    // формат вывода
+								}
+								wp_reset_postdata();
+							?>
+                        </article>
 
                     </div>
 
@@ -142,7 +150,9 @@
                         </div>
                     </div>
 
-                    <div id="tab6"><p><strong>Прайс по материалам:</strong><p>
+                    <div id="tab6">
+
+                    <p><strong>Прайс по материалам:</strong><p>
                         <button id="lookButton">Просмотр</button>
                         <button id="loadButton">Загрузка</button>
                         <div id="materialsView"></div>

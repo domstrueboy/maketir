@@ -34,13 +34,13 @@ h1{
 p{
 	margin:3px;
 }
-footer{
+/*footer{
 	width:60%;
 	margin:0 auto;
 	border-top:1px dashed gray;
 	text-align: center;
 	font-size:10px;
-}
+}*/
 menu{/*Black strip of menu on top*/
 	position:fixed;
 	top:0;
@@ -147,9 +147,7 @@ iframe{
 	margin:0;
 	text-shadow:-1px -1px 1px rgba(255,255,255,0.2), 1px 1px 1px rgba(255,255,255,0.2), 1px 1px 1px rgba(0,0,0,0.7);
 }
-.item{
-	
-}
+
 .heads{
 	margin-top:25px;
 	margin-bottom:10px;
