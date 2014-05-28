@@ -27,7 +27,7 @@
                             <br />
                             <li>
                                 <iframe width="315" height="180" src="http://www.youtube.com/embed/jVM4gxW2Ams?rel=0" frameborder="0" allowfullscreen></iframe>    
-                                <iframe width="315" height="180" src="http://www.youtube.com/embed/vOUWGNmuBeA?rel=0" frameborder="0" allowfullscreen></iframe>    
+                                <iframe width="315" height="180" src="http://www.youtube.com/embed/vOUWGNmuBeA?rel=0" frameborder="0" allowfullscreen></iframe>
                             </li>
                             <br />
                             <li>
@@ -38,116 +38,84 @@
 
                     <div id="tab2"><strong>3Д принтеры и сканеры:</strong><hr>
                         <article>
-                            <?php
-                                if ( have_posts() ) : // если имеются записи в блоге.
-                                    get_posts('category_name=tab2');   // указываем ID рубрик, которые необходимо вывести.
-                                    while (have_posts()) : the_post();  // запускаем цикл обхода материалов блога
-                            ?>
-                                <strong><?php the_title(); ?></strong>
-                                <?php the_content();?> 
-                            <hr>
-                                <?php                          
-                                    endwhile;  // завершаем цикл.
-                                endif;
-                                    /* Сбрасываем настройки цикла. Если ниже по коду будет идти еще один цикл, чтобы не было сбоя. */
-                                    wp_reset_postdata();      
-                                ?>
+                            <?php $posts = get_posts("category_name=tab2"); ?>
+                            <?php if ($posts) : ?>
+                            	<?php foreach ($posts as $post) : setup_postdata ($post); ?>
+
+                            		<div class="product span4 inline">
+                            				<p>
+                            					<strong><?php the_title(); ?></strong><br>
+                            					<?php the_content();?>
+                            					<hr>
+                            				</p>
+                            		</div>
+
+                            	<?php endforeach; ?>
+                            <?php endif; ?>
                         </article>
                     </div>
 
                     <div id="tab3">
-
-                        <p>Cтоимость работ: Услуги 3Д-печати всего 360руб/час работы принтера с учётом материала и НДС. Необходим файл для печати в формате STL.</p>
-                        <p>Мы печатаем на следующем оборудовании:</p>
-                        <div class="span5 inline">
-                            <img src="wp-content/themes/maketir/img/replicator.jpg" width="50%">
-                            <br />
-                            <strong>MakerBot Replicator</strong>
-                            <p> Толщина слоя 0,14...0,27мм,
-                                размеры стола 150 х 220 х 145(высота),
-                                материал для печати АБС, ПЛА, ПВА и др. различных цветов.
-                            </p>
-                        </div>
-
-                        <div class="span5 inline">
-                            <img src="wp-content/themes/maketir/img/mbot.jpg" width="50%">
-                            <br />
-                            <strong>MBot CUBE</strong>
-                            <p> Толщина слоя 0,14...0,27мм,
-                                размеры стола 200 х 200 х 200(высота),
-                                материал для печати АБС, ПЛА, ПВА и др. различных цветов.
-                            </p>
-                        </div>
-                        <strong><p>Также возможен заказ печати на фотополимерном принтере.</p></strong>
                                                 
-                        <article>
-                            <!--<?php
-                                if ( have_posts() ) : // если имеются записи в блоге.
-                                    get_posts('category_name=tab3');   // указываем ID рубрик, которые необходимо вывести.
-                                    while (have_posts()) : the_post();  // запускаем цикл обхода материалов блога
-                            ?>
-                                <strong><?php the_title(); ?></strong>
-                                <?php the_content();?>
-                            	<hr>
-                                <?php                          
-                                    endwhile;  // завершаем цикл.
-                                endif;
-                                    /* Сбрасываем настройки цикла. Если ниже по коду будет идти еще один цикл, чтобы не было сбоя. */
-                                    wp_reset_postdata();      
-                                ?>-->
+	                        <article>
+	                            <?php $posts = get_posts("category_name=tab3"); ?>
+	                            <?php if ($posts) : ?>
+	                            	<?php foreach ($posts as $post) : setup_postdata ($post); ?>
 
-                            <?php $posts = get_posts(array(
-									'numberposts'     => 5,
-									'offset'          => 0,
-									'category'        => '',
-									'orderby'         => 'post_date',
-									'order'           => 'DESC',
-									'include'         => '',
-									'exclude'         => '',
-									'meta_key'        => '',
-									'meta_value'      => '',
-									'post_type'       => 'post',
-									'post_mime_type'  => '',
-									'post_parent'     => '',
-									'post_status'     => 'publish'
-								));
-								foreach($posts as $post){ setup_postdata($post);
-								    // формат вывода
-								}
-								wp_reset_postdata();
-							?>
-                        </article>
+	                            		<div>
+	                            				<p>
+	                            					<strong><?php the_title(); ?></strong><br>
+	                            					<?php the_content();?>
+	                            					<hr>
+	                            				</p>
+	                            		</div>
+
+	                            	<?php endforeach; ?>
+	                            <?php endif; ?>
+	                        </article>
 
                     </div>
 
                     <div id="tab4">
-                        <strong>Формы для литья и отлитые детали</strong>
-                        <p>Можно заказать формы из полиуретана или силикона по Вашей модели (образцу) или модели, напечатанной на нашем принтере.
-                        <strong>Применение:</strong> для литья гипса, литого монолита, бетона и цементных смесей, для изготовления мыла ручной работы, для отливок из воска (выплавляемые модели или свечи)</p><br />
+                        	
+                        	<article>
+	                            <?php $posts = get_posts("category_name=tab4"); ?>
+	                            <?php if ($posts) : ?>
+	                            	<?php foreach ($posts as $post) : setup_postdata ($post); ?>
 
-                        <div id="two">
-                            <script>
-                                var two = document.getElementById('two');
-                                for(i=1; i<118; i++){
-                                two.insertAdjacentHTML("afterEnd", "<a class='example-image-link' href='wp-content/themes/maketir/img/lityo/"+i+".jpg' data-lightbox='example-set'><img class='example-image' src='wp-content/themes/maketir/img/lityo/"+i+"_preview.jpg' width='130' height='98'/></a>");
-                                    }
-                            </script>
-                        </div>
+	                            		<div>
+	                            				<p>
+	                            					<strong><?php the_title(); ?></strong><br>
+	                            					<?php the_content();?>
+	                            					<hr>
+	                            				</p>
+	                            		</div>
+
+	                            	<?php endforeach; ?>
+	                            <?php endif; ?>
+	                        </article>
+
                     </div>
 
                     <div id="tab5">
-                        Макеты, созданные руками мастеров - можно использовать для прототипов или сувениров (различные материалы).<br />
-                        <strong>Стоимость работ:</strong> Услуги по лепнине от 6000 руб/кв.метр, живопись от 3000 руб/кв.метр.<br />Минимальный объем заказа - от 2 кв.метров.<br />
-                        <a href="wp-content/themes/maketir/content/lepnina_v_interyere.doc">Лепнина в интерьере</a><br />
 
-                        <div id="three">
-                            <script>
-                                var three = document.getElementById('three');
-                                for(i=1; i<7; i++){
-                                three.insertAdjacentHTML("afterEnd", "<a class='example-image-link' href='wp-content/themes/maketir/img/lepnina/"+i+".jpg' data-lightbox='example-set'><img class='example-image' src='wp-content/themes/maketir/img/lepnina/"+i+"_preview.jpg' width='130' height='98'/></a>");
-                                    }
-                            </script>
-                        </div>
+                        	<article>
+	                            <?php $posts = get_posts("category_name=tab5"); ?>
+	                            <?php if ($posts) : ?>
+	                            	<?php foreach ($posts as $post) : setup_postdata ($post); ?>
+
+	                            		<div>
+	                            				<p>
+	                            					<strong><?php the_title(); ?></strong><br>
+	                            					<?php the_content();?>
+	                            					<hr>
+	                            				</p>
+	                            		</div>
+
+	                            	<?php endforeach; ?>
+	                            <?php endif; ?>
+	                        </article>
+                        
                     </div>
 
                     <div id="tab6">

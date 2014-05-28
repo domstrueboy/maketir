@@ -156,11 +156,15 @@ iframe{
 	width:100%;
 }
 
-.example-image-link{
+.size-thumbnail{
 	margin:0;
 	padding:0;
 	border:0;
 }
+.product{
+	margin: 15px 15px 15px 50px;
+}
+
 /*width of divs*/
 .span1{
 	width:10%;
